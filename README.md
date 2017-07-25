@@ -10,7 +10,7 @@ I should mention that none of these solutions are written with respect to best S
 
 This repostiory also features some good implementations for advanced data structures and algorithms like - persistent segment trees, implict treaps, heavy light decomposition, centroid decomposition, suffix automaton etc.
 
-**Warning** This repo also contains untested, incomplete and incorrect programs. I do not claim any responsibility for any any harm that these programs may cause to your computer. Use at your own discretion.
+**Warning**: This repo also contains untested, incomplete and incorrect programs. I do not claim any responsibility for any any harm that these programs may cause to your computer. Use at your own discretion.
 
 ## Codeforces
 
