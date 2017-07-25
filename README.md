@@ -10,6 +10,8 @@ I should mention that none of these solutions are written with respect to best S
 
 This repostiory also features some good implementations for advanced data structures and algorithms like - persistent segment trees, implict treaps, heavy light decomposition, centroid decomposition, suffix automaton etc.
 
+**Warning** This repo also contains untested, incomplete and incorrect programs. I do not claim any responsibility for any any harm that these programs may cause to your computer. Use at your own discretion.
+
 ## Codeforces
 
 Codeforces is one of the most active competitive programming communities on the internet. Each sub-directory in the Codeforces directory is named after a Codeforces round. The solution for each problem in the round is featured in its own folder, named after the problem code, usually a single uppercase alphabet.
