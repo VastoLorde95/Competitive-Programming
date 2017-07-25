@@ -1,0 +1,3 @@
+python A.py > inp.in
+./A < inp.in > ans2.out
+python checkit.py

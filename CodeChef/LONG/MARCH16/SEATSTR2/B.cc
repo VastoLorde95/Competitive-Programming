@@ -1,0 +1,130 @@
+#include <bits/stdc++.h>
+
+#define sd(x) scanf("%d",&x)
+#define sd2(x,y) scanf("%d%d",&x,&y)
+#define sd3(x,y,z) scanf("%d%d%d",&x,&y,&z)
+
+#define fi first
+#define se second
+#define pb push_back
+#define mp make_pair
+#define foreach(it, v) for(__typeof((v).begin()) it=(v).begin(); it != (v).end(); ++it)
+#define meta __FUNCTION__,__LINE__
+
+#define _ ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
+#define __ freopen("input.txt","r",stdin);freopen("output.txt","w",stdout);
+
+using namespace std;
+
+template<typename S, typename T> 
+ostream& operator<<(ostream& out,pair<S,T> const& p){out<<'('<<p.fi<<", "<<p.se<<')';return out;}
+
+template<typename T>
+ostream& operator<<(ostream& out,vector<T> const& v){
+int l=v.size();for(int i=0;i<l-1;i++)out<<v[i]<<' ';if(l>0)out<<v[l-1];return out;}
+
+void tr(){cout << endl;}
+template<typename S, typename ... Strings>
+void tr(S x, const Strings&... rest){cout<<x<<' ';tr(rest...);}
+
+typedef long long ll;
+typedef pair<int,int> pii;
+
+const int N = 100100;
+const int M = 26;
+const ll MOD = 1e9 + 7;
+
+int n;
+ll f[N], cnt[M];
+char s[N];
+
+
+ll fast(ll a, ll b){
+	ll ret = 1;
+	while(b){
+		if((b&1)) ret = (ret*a)%MOD;
+		a = (a*a)%MOD;
+		b >>= 1;
+	}
+	return ret;
+}
+
+ll inv(ll x){
+	return fast(x, MOD-2);
+}
+
+void solve(){
+	scanf("%s", s);
+	n = strlen(s);
+	
+	memset(cnt, 0, sizeof cnt);
+	
+	ll ways = f[n];
+	for(int i = 0; i < n; i++) cnt[s[i] - 'a']++;
+	for(int i = 0; i < M; i++) if(cnt[i] > 0) ways = (ways * inv(f[cnt[i]])) % MOD;
+
+	ll ans = (ways * ways) % MOD;
+	ans = (ans - ways + MOD) % MOD;
+
+	ll tmp = 0;
+	for(int i = 0; i < M; i++) tmp = (tmp + (cnt[i] * (n - cnt[i])) % MOD) % MOD;
+	tmp = (tmp * inv(2)) % MOD;
+	tmp = (tmp * ways) % MOD;
+	
+	ans = (ans - tmp + MOD) % MOD;
+	
+	tmp = 0;
+	for(int i = 0; i < M; i++)
+		for(int j = 0; j < i; j++)
+			for(int k = 0; k < j; k++)
+				tmp = (tmp + (cnt[i] * cnt[j] * cnt[k] * 2) % MOD) % MOD;
+	tmp = (tmp * ways) % MOD;
+	
+	ans = (ans - tmp + MOD) % MOD;
+	
+
+	tmp = 0;	
+	for(int i = 0; i < M; i++){
+		if(!cnt[i]) continue;
+		for(int j = 0; j < i; j++){
+			if(!cnt[j]) continue;
+			for(int k = 0; k <= i; k++){
+				if((k == i or k == j) and cnt[i] == 1) continue;
+				for(int l = 0; l < k; l++){
+					if((l == j or l == i) and cnt[l] == 1) continue;
+					
+					
+					tr(i,j,k,l,cnt[i],cnt[j]);
+					
+					ll t1 = cnt[i] * cnt[j];
+					ll t2 = 1;
+					if(k == i) t2 *= max(0ll, cnt[k] - 1); else t2 *= cnt[k];
+					if(l == j) t2 *= max(0ll, cnt[l] - 1); else t2 *= cnt[l];
+					t1 %= MOD;
+					t2 %= MOD;
+					
+					tmp = (tmp + (t1 * t2)%MOD)%MOD;
+				}
+			}
+		}
+	}
+	
+	tmp = (tmp * inv(2)) % MOD;
+	tmp = (tmp * ways) % MOD;
+
+	tr(tmp);
+	
+	ans = (ans - tmp + MOD) % MOD;
+	
+	printf("%lld\n", ans);
+	
+}
+
+int main(){
+	f[0] = 1;
+	for(int i = 1; i < N; i++) f[i] = (f[i-1] * i) % MOD;
+	
+	int t; sd(t); while(t--) solve();
+	
+	return 0;
+}
