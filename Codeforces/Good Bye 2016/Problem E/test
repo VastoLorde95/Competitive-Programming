@@ -1,0 +1,43 @@
+build 143 = l : 0 |  r : 4
+0 0 0 0 0 
+0 1 1 1 0 
+0 0 1 1 0 
+0 0 0 1 0 
+0 0 0 0 0 
+build 152 = "bitch ka" : bitch ka
+1 1 1 1 0 
+0 1 1 1 0 
+0 0 1 1 0 
+0 0 0 1 0 
+0 0 0 0 1 
+build 161 = "khalass" : khalass
+
+build 143 = l : 4 |  r : 8
+0 0 0 0 0 
+0 0 0 0 0 
+0 0 0 0 0 
+0 0 0 0 0 
+0 0 0 0 1 
+build 152 = "bitch ka" : bitch ka
+0 0 0 0 0 
+0 0 0 0 0 
+0 0 0 0 0 
+0 0 0 4 3 
+0 0 0 0 3 
+build 161 = "khalass" : khalass
+
+
+build 143 = l : 0 |  r : 8
+0 0 0 0 0 
+0 1 1 1 1 
+0 0 1 1 1 
+0 0 0 1 1 
+0 0 0 0 1 
+build 152 = "bitch ka" : bitch ka
+1 1 1 1 1 
+0 1 1 1 1 
+0 0 1 1 1 
+0 0 0 5 4 
+0 0 0 0 4 
+build 161 = "khalass" : khalass
+

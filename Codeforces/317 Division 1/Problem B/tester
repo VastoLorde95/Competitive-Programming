@@ -1,0 +1,4 @@
+python gen.py > inp.in
+./B < inp.in > 1.out
+./B2 < inp.in > 2.out
+python check.py

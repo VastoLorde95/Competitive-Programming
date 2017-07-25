@@ -1,0 +1,6 @@
+5 1
+a := 1
+bb := 0
+cx := ? OR a
+d := ? XOR ?
+e := d AND bb

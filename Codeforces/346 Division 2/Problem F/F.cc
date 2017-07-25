@@ -1,0 +1,181 @@
+#include <bits/stdc++.h>
+
+#define sd(x) scanf("%d",&x)
+#define sd2(x,y) scanf("%d%d",&x,&y)
+#define sd3(x,y,z) scanf("%d%d%d",&x,&y,&z)
+
+#define fi first
+#define se second
+#define pb push_back
+#define mp make_pair
+#define foreach(it, v) for(__typeof((v).begin()) it=(v).begin(); it != (v).end(); ++it)
+#define meta __FUNCTION__,__LINE__
+
+#define _ ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
+#define __ freopen("input.txt","r",stdin);freopen("output.txt","w",stdout);
+
+using namespace std;
+
+template<typename S, typename T> 
+ostream& operator<<(ostream& out,pair<S,T> const& p){out<<'('<<p.fi<<", "<<p.se<<')';return out;}
+
+template<typename T>
+ostream& operator<<(ostream& out,vector<T> const& v){
+int l=v.size();for(int i=0;i<l-1;i++)out<<v[i]<<' ';if(l>0)out<<v[l-1];return out;}
+
+void tr(){cout << endl;}
+template<typename S, typename ... Strings>
+void tr(S x, const Strings&... rest){cout<<x<<' ';tr(rest...);}
+
+typedef long long ll;
+typedef pair<int,int> pii;
+
+const int N = 1001;
+
+int n, m;
+ll k;
+
+set<int> comp_numbers;
+int mxsz;
+
+vector<pair<ll, pii> > pts;
+
+int p[N*N], rnk[N*N], sz[N*N], active[N*N];
+int taken[N*N];
+
+ll to_get;
+
+int get(int x, int y){
+	return m*(x-1) + y;
+}
+
+int dx[] = {1, -1, 0, 0};
+int dy[] = {0, 0, 1, -1};
+
+void create(int x){
+	p[x] = x, rnk[x] = 0, active[x] = 1, sz[x] = 1;
+	comp_numbers.insert(x);
+	return;
+}
+
+int find(int x){
+	if(x != p[x]) return p[x] = find(p[x]);
+	return x;
+}
+
+void merge(int x, int y){
+	int px = find(x), py = find(y);
+	if(px == py) return;
+	if(rnk[px] > rnk[py]){
+		comp_numbers.erase(py);
+		p[py] = px;
+		sz[px] += sz[py];
+	}
+	else{
+		comp_numbers.erase(px);
+		p[px] = py;
+		sz[py] += sz[px];
+	}
+	if(rnk[px] == rnk[py]) rnk[py] = rnk[py] + 1;
+	return;
+}
+
+bool good(int x, int y){
+	if(x >= 1 and x <= n and y >= 1 and y <= m) return true; return false;
+}
+
+void dfs(int x, int y){
+	if(!active[get(x,y)]) return;
+	if(taken[get(x,y)]) return;
+	if(to_get == 0) return;
+	
+	taken[get(x,y)] = 1;
+	active[get(x,y)] = 0;
+	to_get--;
+	for(int j = 0; j < 4; j++){
+		int nx = x + dx[j], ny = y + dy[j];
+		if(good(nx, ny)) dfs(nx, ny);
+	}
+}
+
+int main(){ _
+	cin >> n >> m >> k;
+	
+	ll h;
+	for(int i = 1; i <= n; i++){
+		for(int j = 1; j <= m; j++){
+			cin >> h;
+			
+			pts.pb(mp(h,mp(i,j)));
+		}
+	}
+
+	sort(pts.begin(), pts.end());
+	reverse(pts.begin(), pts.end());
+
+	set<pii> poss;
+
+	for(int i = 0; i < pts.size(); i++){
+		h = pts[i].fi;
+	
+		if(h == 0) break;
+		
+		poss.clear();
+		
+		mxsz = 0;
+		while(i < pts.size() and pts[i].fi == h){
+			int x = pts[i].se.fi, y = pts[i].se.se;
+			int id1 = get(x,y);
+			create(id1);
+			
+			poss.insert(pts[i].se);	
+			
+			for(int j = 0; j < 4; j++){
+				int nx = x + dx[j], ny = y + dy[j];
+				if(!good(nx,ny)) continue;
+				int id2 = get(nx, ny);
+				
+				if(active[id2]) merge(id1, id2);
+			}
+			
+			mxsz = max(mxsz, sz[find(id1)]);			
+			i++;
+		}
+		i--;
+		
+		ll hay = h * (1ll * i + 1);
+		ll del = hay - k;
+		
+		if(del >= 0 and del % h == 0 and (del / h) < i+1 and mxsz >= (i+1) - (del / h)){
+			to_get = (i+1) - (del / h);
+			cout << "YES\n";
+			for(int ii = 1; ii <= n; ii++){
+				for(int jj = 1; jj <= m; jj++){
+					if(sz[find(get(ii,jj))] >= to_get and poss.find(mp(ii,jj)) != poss.end()){
+						dfs(ii, jj);
+						jj = m+1; ii = n+1;
+						break;
+					}
+				}
+			}
+			
+			for(int ii = 1; ii <= n; ii++){
+				for(int jj = 1; jj <= m; jj++){
+					if(taken[get(ii,jj)]){
+						cout << h << " ";
+					}
+					else{
+						cout << "0 ";
+					}
+				}
+				cout << "\n";
+			}
+			
+			return 0;
+		}
+	}
+	
+	cout << "NO\n";
+	
+	return 0;
+}
