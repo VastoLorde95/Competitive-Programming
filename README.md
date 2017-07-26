@@ -33,3 +33,15 @@ Random - Random Problems
 ## [SPOJ](http://www.spoj.com)
 
 One of the oldest online judge. Solutions to most of the problems I solved can be found in the `Random` directory
+
+## [HackerEarth](http://hackerearth.com)
+
+Not as active on HackerEarth, but some of my favorite problems are on this website. In particular I am proud of problem C from Tesco Codeathon 2016 and the problem "Upgrade" from July Clash 2015.
+
+## Library
+
+This directory contains template implementations of some advanced datastructures and algorithms that are useful for programming competitions.
+
+## [Codejam](https://codejam.withgoogle.com/codejam/)
+
+Google's flagship annual programming competition, also one of the most popular with the highest amount of participation. 
