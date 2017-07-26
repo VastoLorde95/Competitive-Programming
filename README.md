@@ -16,11 +16,11 @@ This repostiory also features some good implementations for advanced data struct
 
 Codeforces is one of the most active competitive programming communities on the internet. Each sub-directory in the Codeforces directory is named after a Codeforces round. The solution for each problem in the round is featured in its own folder, named after the problem code, usually a single uppercase alphabet.
 
-## [Hackerrank](hackerrank.com)
+## [Hackerrank](http://hackerrank.com)
 
 The Hackerrank directory contains solutions for problems on Hackerrank - another competitive progrmming website. Most of the solutions are from past competitions.
 
-## [CodeChef](codechef.com)
+## [CodeChef](http://codechef.com)
 
 IPC - Solutions for the Indian Programming Community (IPC) programming contest series
 LONG - Solutions for CodeChef long challenges
@@ -30,6 +30,6 @@ SNACKDOWN - Solutions for CodeChef SnackDown challenges
 OTHER - Other contests
 Random - Random Problems
 
-## [SPOJ](www.spoj.com)
+## [SPOJ](http://www.spoj.com)
 
 One of the oldest online judge. Solutions to most of the problems I solved can be found in the `Random` directory
