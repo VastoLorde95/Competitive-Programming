@@ -1,6 +1,6 @@
 /*
 	Solution for SPOJ problem - http://www.spoj.com/problems/MAXISET/
-	Solution using meet-in-the-middle	
+	Solution using meet-in-the-middle, bitmasking and dynamic programming
 */
 
 #include <bits/stdc++.h>
