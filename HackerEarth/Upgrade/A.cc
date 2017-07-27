@@ -2,7 +2,7 @@
 
 HackerEarth problem Upgrade 
 URL: https://www.hackerearth.com/challenge/competitive/july-clash-15/algorithm/upgrade/
-
+Solution using Heavy Light Decomposition and Implicit Treap
 */
 
 #include <bits/stdc++.h>

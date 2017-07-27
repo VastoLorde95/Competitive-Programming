@@ -1,3 +1,8 @@
+/*
+	Solution for SPOJ problem - http://www.spoj.com/problems/MAXISET/
+	Solution using meet-in-the-middle	
+*/
+
 #include <bits/stdc++.h>
 
 #define sd(x) scanf("%d",&x)

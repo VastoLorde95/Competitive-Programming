@@ -1,3 +1,8 @@
+/*
+ Solution for CodeChef problem http://codechef.com/problems/MGCHGYM
+ Using Implict Treaps
+*/
+
 #include <bits/stdc++.h>
 
 #define sd(x) scanf("%d",&x)
