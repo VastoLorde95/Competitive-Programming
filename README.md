@@ -45,3 +45,7 @@ This directory contains template implementations of some advanced datastructures
 ## [Codejam](https://codejam.withgoogle.com/codejam/)
 
 Google's flagship annual programming competition, also one of the most popular with the highest amount of participation. 
+
+## [Timus](http://acm.timus.ru/)
+
+Timus Online Judge is the largest Russian archive of programming problems with automatic judging system. Problems are mostly collected from contests held at the Ural Federal University, Ural Championships, Ural ACM ICPC Subregional Contests, and Petrozavodsk Training Camps
