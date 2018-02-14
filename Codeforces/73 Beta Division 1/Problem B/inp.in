@@ -1,6 +1,0 @@
-5
-typedef void* ptv
-typeof ptv
-typedef &&ptv node
-typeof node
-typeof &ptv
