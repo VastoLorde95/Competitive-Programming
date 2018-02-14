@@ -1,3 +1,0 @@
-python gen.py > inp.in
-./H < inp.in
-python check.py < inp.in
